@@ -4,7 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 // ================================================================
-class Purchase() {
+class Purchase {
 
 }
 // ================================================================
@@ -16,17 +16,47 @@ router.get('/', function (req, res) {
   // res.render генерує нам HTML сторінку
 
   // ↙️ cюди вводимо назву файлу з сontainer
-  res.render('index', {
+  res.render('alert', {
     // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-    style: 'index',
+    style: 'alert',
 
-    data:{},
+    data:{
+      message: 'Операція успішна',
+      info: 'Товар створений',
+      link: 'test-path',
+    },
 
   })
   // ↑↑ сюди вводимо JSON дані
 })
 
 // ================================================================
+
+// router.get Створює нам один ентпоїнт
+
+// ↙️ тут вводимо шлях (PATH) до сторінки
+router.get('/', function (req, res) {
+  // res.render генерує нам HTML сторінку
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('purchase-index', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'purchase-index',
+
+    data:{
+      img: 'https://picsum.photos/200/300',
+      title: 'Компютер Gaming AMD Ryzen 5 3600/',
+      discription: 'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ /HDD 1 ТБ + SSD 480 ТБ',
+      Category: [
+        {id: 1, text: 'Готовий до відправки',}
+        {id: 2, text: 'Топ продажів',}
+      ],
+      prie: 27000,
+    },
+
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
 
 // Підключаємо роутер до бек-енду
 module.exports = router
