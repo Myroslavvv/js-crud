@@ -48,8 +48,8 @@ router.get('/', function (req, res) {
       title: 'Компютер Gaming AMD Ryzen 5 3600/',
       discription: 'AMD Ryzen 5 3600 (3.6 - 4.2 ГГц) / RAM 16 ГБ /HDD 1 ТБ + SSD 480 ТБ',
       Category: [
-        {id: 1, text: 'Готовий до відправки',}
-        {id: 2, text: 'Топ продажів',}
+        {id: 1, text: 'Готовий до відправки',},
+        {id: 2, text: 'Топ продажів',},
       ],
       prie: 27000,
     },
