@@ -80,7 +80,7 @@ class Product {
 //   User.deleteById(Number(id))
 //   res.render('success-info', {
 //     style: 'success-info',
-//     info: "Користувач видалений",
+//     info: "Користувач створений",
 //   })
 // })
 
