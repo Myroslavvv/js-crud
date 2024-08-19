@@ -4,27 +4,10 @@
   padding: 16;
   gap: 32;
 }
-.form__title {
-  font-size: 30px;
-  font-weight: bold;
-  padding-bottom: 16;
-}
 .form__info {
   font-size: 20px;
   font-weight: 600;
   padding-bottom: 16;
-}
-.form__block {
-  display: flex;
-  justify-content: flex-start;
-  font-size: 20px;
-  gap: 24px;
-}
-.form__content {
-  display: grid;
-  border: 1px solid #ddd;
-  padding: 8;
-  gap: 24;
 }
 .form__field {
   display: flex;
@@ -33,18 +16,45 @@
   padding-bottom: 16;
   gap: 8;
 }
-.form__label {
-  font-size: 14px;
+.form__button-update {
+  border: 1px solid #ddd;
+  padding: 8;
+  background-color: aqua;
+  width: 100%;
+}
+.form__button-del {
+  border: 1px solid #ddd;
+  padding: 8;
+  background-color: red;
+  width: 100%;
 }
 .form__input {
   border: 1px solid #ddd;
   padding: 8;
 }
-.form__button {
+.form__product-list {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8;
+}
+.form__title {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 16;
+}
+.form__content {
+  display: grid;
   border: 1px solid #ddd;
   padding: 8;
-  background-color: aqua;
-  width: 100%;
+  gap: 24;
+}
+.form__block {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  gap: 24px;
 }
 .form__name {
   font-size: 20px;
@@ -69,18 +79,6 @@
   font-weight: bold;
   color: blue;
   padding-bottom: 16;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 40;
-}
-
-.user-list li {
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

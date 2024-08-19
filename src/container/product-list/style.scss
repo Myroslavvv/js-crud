@@ -1,0 +1,68 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: 16;
+    gap: 4*(8);
+    
+    &__product-list {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 20px;
+        font-weight: 600;
+        // border: 1px solid #ddd;
+        padding: 4*(2);
+    }
+    
+    &__title {
+        font-size: 30px;
+        font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+    
+    &__content {
+    display: grid;
+    border: 1px solid #ddd;
+    padding: 4*(2);
+    gap: 4*(6);
+    }    
+    
+    &__block {
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+        // font-weight: 600;
+        // padding-bottom: 4*(4);
+        gap: 24px;
+    }
+    
+    &__name {
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__description {
+        font-size: 15px;
+        // font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__id {
+        font-size: 17px;
+        // font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__price {
+        font-size: 25px;
+        font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__edit {
+        font-size: 20px;
+        font-weight: bold;
+        color: blue;
+        padding-bottom: 4*(4);
+    }
+}

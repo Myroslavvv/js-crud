@@ -1,0 +1,68 @@
+{{!    
+Це код container файлу для index сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+ }}
+
+<div class="form">
+	<h1 class="form__title">Редагування товару</h1>
+	<form method="POST" action="/product-edit">
+		<div class="form__content">
+		<h2 class="form__info">Інформація про товар</h2>
+			<div class="form__block">
+				<div class="form__field">
+					<label for="name" class="form__label">Назва товару</label>
+					<input type="name" name="name" class="form__input">
+				</div>
+				<div class="form__field">
+					<label for="price" class="form__label">Ціна</label>
+					<input type="price" name="price" class="form__input">
+				</div>
+				<div class="form__field">
+					<label for="id" class="form__label">ID:</label>
+					<input type="id" name="id" class="form__input">
+				</div>
+			</div>
+			<div class="form__field">
+				<label for="description" class="form__label">Короткий опис товару</label>
+				<input type="description" name="description" class="form__input">
+				<label for="overview" class="form__label">Відображується у картці товару</label>
+			</div>
+			<div class="form__block">
+				{{!-- <form action="/product-edit" method="POST"> --}}
+					<button type="submit" class="form__button-update">Зберегти оновлення</button>
+				    {{!-- <button class="button"><a href="/product-list">Повернутися назад</a></button> --}}
+				{{!-- </form> --}}
+				{{!-- <button class="form__button-update"><a href="/product-edit">Зберегти оновлення</a></button> --}}
+				{{!-- <button class="form__edit"><a href="/product-edit?id={{id}}">Редагувати</a></button> --}}
+				{{!-- <li>{{name}} | {{price}} | {{description}} | {{id}} <a href="/product-delete?id={{id}}">(Видалити товар)</a></li> --}}
+				<button type="button" class="form__button-del" onclick="window.location.href='/product-delete?id={{id}}'">Видалити товар</button>
+				{{!-- <button type="submit" class="form__button-del"><a href="/product-delete?id={{id}}">Видалити товар</a></button> --}}
+					{{!-- <ul>
+						<li><a href="/user-delete?id={{id}}">(Видалити)</a></li>
+					</ul> --}}
+			</div>
+		</div>
+	</form>
+  	<a href="/">Повернутися назад</a>
+
+
+	{{!-- <div class="form__content">
+		<h2 class="form__name">Стильна сукня</h2>
+		<h4 class="form__description">Опис сукня</h4>
+		<h4 class="form__id">ID: 123</h4>
+		<div class="form__block">
+			<div class="form__field">
+				<h3 class="form__price">Ціна 1500</h3>
+			</div>
+			<div class="form__field">
+				<button class="form__edit">Редагувати</button>
+			</div>
+		</div>
+	</div> --}}
+
+</div>
+ 
+{{! 
+    Цей код містить лише те, що буде виводитись в <body>
+    Адже наш layout/default.hbs має вже структуру HTML
+}}
