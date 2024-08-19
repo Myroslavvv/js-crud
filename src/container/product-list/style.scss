@@ -9,7 +9,6 @@
         justify-content: flex-start;
         font-size: 20px;
         font-weight: 600;
-        // border: 1px solid #ddd;
         padding: 4*(2);
     }
     
@@ -30,8 +29,6 @@
         display: flex;
         justify-content: space-around;
         font-size: 20px;
-        // font-weight: 600;
-        // padding-bottom: 4*(4);
         gap: 24px;
     }
     
@@ -43,13 +40,11 @@
 
     &__description {
         font-size: 15px;
-        // font-weight: bold;
         padding-bottom: 4*(4);
     }
 
     &__id {
         font-size: 17px;
-        // font-weight: bold;
         padding-bottom: 4*(4);
     }
 

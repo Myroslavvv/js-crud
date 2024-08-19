@@ -30,62 +30,6 @@
 		</form>
 	</div>
 	</section>
-
-	<section>
-	{{!-- <div class="form">
-		<h1 class="form__title">Список товарів</h1>
-			<form method="POST" action="/product-list">
-
-		<div class="product-list">
-			{{#with data.products}}
-			{{#if isEmpty}}
-				<mark>Список товарів пустий</mark>
-				{{else}}
-					<ul>
-						{{#each list}}
-							<li>{{name}} | {{price}} | {{description}} | {{id}} <a href="/product-delete?id={{id}}">(Видалити)</a></li>
-						{{/each}}
-					</ul>
-			{{/if}}
-			{{/with}}
-		</div> 
-	</div> --}}
-	</section>
-
-	<section>
-		{{!-- <div class="form">
-			<h1 class="form__title">Редагування товару</h1>
-			<form method="POST" action="/product-edit">
-				<div class="form__content">
-				<h2 class="form__info">Інформація про товар</h2>
-					<div class="form__block">
-						<div class="form__field">
-							<label for="name" class="form__label">Назва товару</label>
-							<input type="name" name="name" class="form__input">
-						</div>
-						<div class="form__field">
-							<label for="price" class="form__label">Ціна</label>
-							<input type="price" name="price" class="form__input">
-						</div>
-						<div class="form__field">
-							<label for="id" class="form__label">ID:</label>
-							<input type="id" name="id" class="form__input">
-						</div>
-					</div>
-					<div class="form__field">
-						<label for="description" class="form__label">Короткий опис товару</label>
-						<input type="description" name="description" class="form__input">
-						<label for="overview" class="form__label">Відображується у картці товару</label>
-					</div>
-					<div class="form__block">
-						<button class="form__button">Зберегти оновлення</button>
-						<button class="form__button">Видалити товар</button>
-					</div>
-				</div>
-			</form>
-		</div> --}}
-	</section>
-
 </main>
  
 {{! 
