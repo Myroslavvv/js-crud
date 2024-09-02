@@ -1,0 +1,82 @@
+.form {
+    display: grid;
+    flex-direction: column;
+    padding: 25;
+    
+    &__product-list {
+        display: flex;
+        justify-content: flex-start;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 4*(2);
+    }
+    
+    &__title {
+        font-size: 34px;
+        font-weight: bold;
+        padding: 16px;
+        color: blue;
+
+    }
+    
+    &__content {
+    display: grid;
+    padding: 4*(2);
+    gap: 4*(6);
+    }    
+    
+    &__block {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        padding: 10px;
+        gap: 24px;
+        margin: 7px;
+        border: 1px solid gray;
+        text-decoration: none; 
+        color: inherit; 
+    }
+    
+    &__name {
+        font-size: 20px;
+        font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__description {
+        font-size: 15px;
+        padding-bottom: 4*(4);
+    }
+
+    &__id {
+        font-size: 17px;
+        color: gray;
+        padding-top: 25px;
+    }
+
+    &__item-1 {
+        color: gray;
+        padding: 7px;
+    }
+    &__item-2 {
+        padding: 7px;
+    }
+
+    &__price {
+        font-size: 25px;
+        font-weight: bold;
+        padding-bottom: 4*(4);
+    }
+
+    &__edit {
+        font-size: 20px;
+        font-weight: bold;
+        color: blue;
+        padding-bottom: 4*(4);
+    }
+}
+
+.box {
+    box-shadow: 0px 4px 15px 0px rgb(0 0 0 / 15%);
+    padding: 20px;
+}

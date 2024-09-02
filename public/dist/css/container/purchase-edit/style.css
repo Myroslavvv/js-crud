@@ -1,0 +1,94 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 16;
+  gap: 32;
+}
+.form__info {
+  font-size: 20px;
+  font-weight: 600;
+  padding-bottom: 16;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 16;
+  gap: 8;
+}
+.form__button-update {
+  border: 1px solid #ddd;
+  padding: 20;
+  background-color: blue;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+}
+.form__button-del {
+  border: 1px solid #ddd;
+  padding: 8;
+  background-color: red;
+  width: 100%;
+}
+.form__input {
+  border: 1px solid #ddd;
+  padding: 8;
+}
+.form__product-list {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8;
+}
+.form__title {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 16;
+  color: blue;
+}
+.form__content {
+  display: grid;
+  border: 1px solid #ddd;
+  padding: 8;
+  gap: 24;
+}
+.form__block {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 20px;
+  gap: 24px;
+}
+.form__name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 16;
+}
+.form__description {
+  font-size: 15px;
+  padding-bottom: 16;
+}
+.form__id {
+  font-size: 17px;
+  padding-bottom: 16;
+}
+.form__price {
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 16;
+}
+.form__edit {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  padding-bottom: 16;
+}
+
+.box {
+  box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+/*# sourceMappingURL=style.css.map */

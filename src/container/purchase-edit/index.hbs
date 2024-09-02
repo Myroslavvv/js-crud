@@ -1,0 +1,36 @@
+
+
+<div class="form">
+	<div class="box">
+	<h1 class="form__title">Зміна даних</h1>
+	<form method="POST" action="/purchase-edit">
+		{{#with data}}
+		<input type="hidden" name="id" value="{{purchase.id}}">
+			<div class="form__id">ID: {{purchase.id}}</div>
+				<div class="form__block">
+					<div class="form__field">
+						<label for="firstname" class="form__label">Ім*я:</label>
+						<input type="firstname" name="firstname" value="{{purchase.firstname}}" class="form__input">
+					</div>
+					<div class="form__field">
+						<label for="lastname" class="form__label">Прізвище:</label>
+						<input type="lastname" name="lastname" value="{{purchase.lastname}}"  class="form__input">
+					</div>
+				</div>
+
+				<div class="form__block">
+					<div class="form__field">
+						<label for="phone" class="form__label">Телефон:</label>
+						<input type="phone" name="phone" value="{{purchase.phone}}"  class="form__input">
+					</div>
+					<div class="form__field">
+						<label for="email" class="form__label">Електронна пошта:</label>
+						<input type="email" name="email" value="{{purchase.email}}"  class="form__input">
+					</div>
+				</div>
+
+				<button type="submit" class="form__button-update">Зберегти оновлення</button>
+		{{/with}}
+	</div>
+</div>
+	

@@ -1,0 +1,41 @@
+@use '../../lib/service.scss' as s;
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.field__label {
+    font-size: 24px;
+}
+
+.field__input {
+    border: 1px solid gray;
+    padding: 2px;
+    border-radius: 10px;
+    // text-align: center; 
+    width: 100%;
+    font-size: 24px;
+}
+
+.field--disabled {
+    position: absolute;
+    display: none;
+}
+
+.button {
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}

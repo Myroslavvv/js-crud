@@ -1,0 +1,70 @@
+{{!
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+}}
+
+<div class="form">
+	<div class="box">
+	<h1 class="form__title">Інформація про замовлення</h1>
+	<form method="GET" action="/purchase-list">
+		{{#with data}}
+			<div class="form__id">ID: {{info.id}}</div>
+				{{>divider}}
+				<div class="form__block">
+					<div class="form__field">
+						<div class="form__item-1">Ім*я:</div>
+						<div class="form__item-2">{{firstname}}</div>
+					</div>
+					<div class="form__field">
+						<div class="form__item-1">Прізвище:</div>
+						<div class="form__item-2">{{lastname}}</div>
+					</div>
+				</div>
+				{{>divider}}
+				<div class="form__block">
+					<div class="form__field">
+						<div class="form__item-1">Телефон:</div>
+						<div class="form__item-2">{{phone}}</div>
+					</div>
+					<div class="form__field">
+						<div class="form__item-1">Електронна пошта:</div>
+						<div class="form__item-2">{{email}}</div>
+					</div>
+				</div>
+				{{>divider}}
+				<div class="form__field">
+					<div class="form__item-1">Назва товару:</div>
+					<div class="form__item-2">{{title}}</div>
+				</div>
+				<div class="form__field">
+					<div class="form__item-1">Коментар:</div>
+					<div class="form__item-2">{{comment}}</div>
+				</div>
+				{{>divider}}
+				<div class="form__block">
+					<div class="form__field">
+						<div class="form__item-1">Вартість товарів:</div>
+						<div class="form__item-2">{{productPrice}}</div>
+					</div>
+					<div class="form__field">
+						<div class="form__item-1">Вартість доставки:</div>
+						<div class="form__item-2">{{deliveryPrice}}</div>
+					</div>
+				</div>
+				{{>divider}}
+				<div class="form__block">
+					<div class="form__field">
+						<div class="form__item-1">Сума до сплати:</div>
+						<div class="form__item-2">{{totalPrice}}</div>
+					</div>
+					<div class="form__field">
+						<div class="form__item-1">Нараховані бонуси:</div>
+						<div class="form__item-2">{{bonus}}</div>
+					</div>
+				</div>
+			<button type="button" class="form__button-edit" onclick="window.location.href='/purchase-edit?id={{info.id}}'">Змінити дані</button>
+		{{/with}}
+	</div>
+</div>
+	
+
