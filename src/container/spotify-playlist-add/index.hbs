@@ -1,0 +1,27 @@
+
+<main class="main">
+  <form action="/spotify-playlist-add" method="post">
+    {{#with data}}
+      <div class="main__content">
+        <h1 class="title title--center">Додати до плейліста</h1>
+    	<a href="/spotify-playlist">Назад до плейлиста</a>
+    	<a href="/spotify-playlists">До списка плейлістів</a>
+        <ul class="track__list">
+          {{#each tracks}}
+            <li class="track">
+              <img src="{{image}}" alt="{{name}}">
+              <div class="track__content">
+                <strong class="track__name">{{name}}</strong>
+                <em class="track__author">{{author}}</em>
+              </div>
+			{{!-- <button type="submit">Додати в плейлист<img width="30" height="30" src="/svg/plus7.svg"></button> --}}
+              <a href="/spotify-playlist-add?playlistId={{../playlistId}}&trackId={{id}}">
+                <img width="30" height="30" src="/svg/plus7.svg">
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+        {{/with}}
+      </div>
+    </form>
+</main>
