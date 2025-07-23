@@ -82,6 +82,20 @@ class Playlist {
     this.name = name; 
     this.tracks = []; //список треків додані до плейліста
     this.image = 'https://picsum.photos/100/100';
+    
+    // Масив можливих кольорів для плейлістів
+    const colors = [
+      '#1DB954', // Spotify green
+      '#3498DB', // Blue
+      '#9B59B6', // Purple
+      '#E74C3C', // Red
+      '#F39C12', // Orange
+      '#2C3E50', // Dark blue
+      '#8E44AD'  // Dark purple
+    ];
+    
+    // Вибираємо випадковий колір
+    this.color = colors[Math.floor(Math.random() * colors.length)];
   }
 
   //Стат.метод для створ.обєкта Playlist і додавання його до списку #list
@@ -120,11 +134,74 @@ class Playlist {
     );
   }
 
-  addTrack(track) {
-    this.tracks.push(track);
+  static findListByValue(name) {
+    return this.#list.filter((playlist) =>
+      playlist.name 
+        .toLowerCase()
+        .includes(name.toLowerCase()),
+    )
   }
 
+  // addTrack(track) {
+  //   this.tracks.push(track);
+  // }
+
+  addTrack(track) {
+    this.tracks.unshift(track); // unshift додає елемент на початок масиву
+  }
 }
+
+// Створюємо тестові плейлісти з конкретними назвами
+const likedSongs = Playlist.create('Пісні, що сподобались');
+likedSongs.image = 'https://picsum.photos/100/100'; // Шлях до зображення з серцем
+
+const mixPlaylist = Playlist.create('Мішанина');
+mixPlaylist.image = 'https://picsum.photos/100/100'; // Шлях до зображення з кружечками
+
+const yinYangPlaylist = Playlist.create('Інь-Ян');
+yinYangPlaylist.image = 'https://picsum.photos/100/100'; // Шлях до зображення Монатіка
+
+const myPlaylist = Playlist.create('Мій плейлист №1');
+myPlaylist.image = 'https://picsum.photos/100/100'; // Шлях до зображення з нотою
+
+// Додаємо треки до плейлістів
+for (let i = 0; i < 50; i++) {
+  if (i < 10) {
+    const tracks = Track.getList();
+    if (tracks.length > 0) {
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      yinYangPlaylist.addTrack(randomTrack);
+    }
+  }
+  
+  if (i < 20) {
+    const tracks = Track.getList();
+    if (tracks.length > 0) {
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      mixPlaylist.addTrack(randomTrack);
+    }
+  }
+  
+  if (i < 36) {
+    const tracks = Track.getList();
+    if (tracks.length > 0) {
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      myPlaylist.addTrack(randomTrack);
+    }
+  }
+  
+  if (i < 50) {
+    const tracks = Track.getList();
+    if (tracks.length > 0) {
+      const randomTrack = tracks[Math.floor(Math.random() * tracks.length)];
+      likedSongs.addTrack(randomTrack);
+    }
+  }
+}
+
+// Playlist.makeMix(Playlist.create('Test'))
+// Playlist.makeMix(Playlist.create('Test2'))
+// Playlist.makeMix(Playlist.create('Test3'))
 
 // ================================================================
 
@@ -168,7 +245,7 @@ router.post('/spotify-create', function (req, res) {
         message: 'Помилка',
         info: 'Введіть назву плейліста',
         link: isMix 
-        ? '/spotify-create?isMix=true'
+        ? `/spotify-create?isMix=true`
         : '/spotify-create',
       },
     });
@@ -228,7 +305,6 @@ router.get('/spotify-playlist', function (req, res) {
   });
 });
 
-
 // ================================================================
 
 router.get('/spotify-track-delete', function (req, res) {
@@ -260,8 +336,42 @@ router.get('/spotify-track-delete', function (req, res) {
 });
 
 // ================================================================
+router.get('/spotify-search', function (req, res) {
+  const value = ''
+  const list = Playlist.findListByValue(value);
 
-//Роут для відображения стор додавання трека в плейлист
+  res.render('spotify-search', {  
+    style: 'spotify-search',
+    data: {
+      list: list.map(({tracks, ...rest}) => ({
+        ...rest,
+        amount: tracks.length,
+      })),  
+      value,
+    },
+  });
+});
+
+router.post('/spotify-search', function (req, res) {
+  const value = req.body.value || ''
+  const list = Playlist.findListByValue(value);
+  console.log(value)
+
+  res.render('spotify-search', {  
+    style: 'spotify-search',
+    data: {
+      list: list.map(({tracks, ...rest}) => ({
+        ...rest,
+        amount: tracks.length,
+      })),  
+      value,
+    },
+  });
+});
+
+// ================================================================
+
+// Роут для відображения стор додавання трека в плейлист
 router.get('/spotify-playlist-add', function (req, res) {
   const playlistId = Number(req.query.playlistId); // отримали ідент.ID з query
   const playlist = Playlist.getById(playlistId); // отримали по ідент.ID плейліст
@@ -276,11 +386,12 @@ router.get('/spotify-playlist-add', function (req, res) {
       data:{
         message: 'Помилка',
         info: 'Такого плейліста не знайдено spotify-playlist-add-get',
-        link: `/spotify-playlist?id=${playlistId}`,
+        // link: `/spotify-playlist?id=${playlistId}`,
+        link: `/spotify-playlist-add-track?playlistId=${playlistId}&trackId={{id}}`,
       },
     })
   }
-
+  
   const tracks = Track.getList(); // Получаєм всі треки, які можна додавти
   res.render('spotify-playlist-add', {  // виведе data,якщо є плейліст
     style: 'spotify-playlist-add',
@@ -292,6 +403,7 @@ router.get('/spotify-playlist-add', function (req, res) {
   })
 });
 
+
 // Роут для обробки додавання трека в плейлист
 router.post('/spotify-playlist-add', function (req, res) {
   const playlistId = Number(req.body.playlistId);
@@ -299,20 +411,21 @@ router.post('/spotify-playlist-add', function (req, res) {
   const playlist = Playlist.getById(playlistId);
   const track = Track.getById(trackId);
   console.log('Получимо плейліст id, трек:', playlistId,trackId);
-
+  
   if (!playlist) {
-      return res.render('alert', {
+    return res.render('alert', {
       style: 'alert',
       data: {
-          message: 'Помилка',
+        message: 'Помилка',
         info: 'Такого плейліста не знайдено spotify-playlist-add-post',
-        link: `/spotify-playlist?id=${playlistId}`,
+        // link: `/spotify-playlist?id=${playlistId}`,
+        link: `/spotify-playlist-add-track?playlistId=${playlistId}&trackId={{id}}`,
       },
     });
   }
 
   if (!track) {
-      return res.render('alert', {
+    return res.render('alert', {
       style: 'alert',
       data: {
         message: 'Помилка',
@@ -321,11 +434,11 @@ router.post('/spotify-playlist-add', function (req, res) {
       },
     });
   }
-
-  playlist.addTrack(track); // Добавляєм трек в плейлист
-
+  
+    playlist.addTrack(track); // Добавляєм трек в плейлист
+  
   res.render('spotify-playlist', {  // Відображаєм обновлений плейлист
-      style: 'spotify-playlist',
+    style: 'spotify-playlist',
     data: {
       playlistId: playlist.id,
       tracks: playlist.tracks,
@@ -335,15 +448,75 @@ router.post('/spotify-playlist-add', function (req, res) {
 });
 
 // ================================================================
+// Роут для обробки додавання трека через GET-запит
+router.get('/spotify-playlist-add-track', function (req, res) {
+  const playlistId = Number(req.query.playlistId);
+  const trackId = Number(req.query.trackId);
+  const playlist = Playlist.getById(playlistId);
+  const track = Track.getById(trackId);
+  
+  console.log('Додаємо трек до плейліста:', playlistId, trackId);
+  
+  if (!playlist) {
+    return res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Помилка',
+        info: 'Такого плейліста не знайдено',
+        link: `/spotify-playlist-add?playlistId=${playlistId}`,
+      },
+    });
+  }
 
+  if (!track) {
+    return res.render('alert', {
+      style: 'alert',
+      data: {
+        message: 'Помилка',
+        info: 'Такого трека не знайдено',
+        link: `/spotify-playlist-add?playlistId=${playlistId}`,
+      },
+    });
+  }
+  
+  playlist.addTrack(track); // Додаємо трек до плейліста
+  
+  // Перенаправляємо на сторінку плейліста
+  res.redirect(`/spotify-playlist?id=${playlistId}`);
+});
 
+// ================================================================
+
+// router.get('/spotify-playlists', function (req, res) {
+//   const playlists = Playlist.getList(); // Получаємо список всіх плейлистів
+//   res.render('spotify-playlists', { // Відправляємо дані на шаблон
+//     style: 'spotify-playlists',
+//     data: {
+//       playlists, // Передаємо список плейлистів в шаблон
+//     },
+//   });
+// });
+
+// ================================================================
 
 router.get('/spotify-playlists', function (req, res) {
   const playlists = Playlist.getList(); // Получаємо список всіх плейлистів
+  
+  // Додаємо додаткові дані для відображення
+  const formattedPlaylists = playlists.map(playlist => ({
+    id: playlist.id,
+    name: playlist.name,
+    image: playlist.image,
+    color: playlist.color,
+    tracks: playlist.tracks,
+    tracksCount: playlist.tracks.length + ' пісень'
+  }));
+  
   res.render('spotify-playlists', { // Відправляємо дані на шаблон
     style: 'spotify-playlists',
     data: {
-      playlists, // Передаємо список плейлистів в шаблон
+      playlists: formattedPlaylists, // Передаємо список плейлистів в шаблон
+      title: 'Моя бібліотека'
     },
   });
 });

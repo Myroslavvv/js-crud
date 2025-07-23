@@ -1,0 +1,62 @@
+{{!-- <main class="main">
+	{{#with data}}
+		<div class="main__content">
+			<h1 class="title title--center">Пошук плейліста</h1>
+			
+			<form method="POST" action="/spotify-search" class="search">
+			<img src="/svg/m1.svg">
+			<input type="search" name="value" placeholder="Введіть запит" class="search__input" value="{{value}}" />
+			<button class="search__button">Пошук</button>
+			</form>
+			
+			<ul class="playlist__list">
+			{{#each list}}
+				<li class="playlist">
+				<img src="{{image}}" alt="{{name}}" height="100px">
+				<div class="playlist__content">
+					<strong class="playlist__name">{{name}}</strong>
+					<span class="playlist__amount">Кількість пісень: {{amount}}</span>
+				</div>
+					<a href="/spotify-playlist?id={{id}}">
+						<img width="30" height="30" src="/svg/arrow-right.svg">
+					</a>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	{{/with}}
+</main> --}}
+
+
+<main class="main">
+	{{#with data}}
+		<div class="main__content">
+			<h1 class="title title--center">Пошук плейліста</h1>
+			
+			<form method="POST" action="/spotify-search" class="search">
+				<img src="/svg/m1.svg">
+				<input type="search" name="value" placeholder="Введіть запит" class="search__input" value="{{value}}" />
+				<button class="search__button">Пошук</button>
+			</form>
+			
+			<ul class="playlist__list">
+			{{#each list}}
+				<li class="playlist">
+					<!-- Обгортаємо зображення та контент в посилання -->
+					<a href="/spotify-playlist?id={{id}}" class="playlist__link">
+						<img src="{{image}}" alt="{{name}}" height="100px" class="playlist__image">
+						<div class="playlist__content">
+							<strong class="playlist__name">{{name}}</strong>
+							<span class="playlist__amount">Кількість пісень: {{amount}}</span>
+						</div>
+					</a>
+					<!-- Стрілка залишається окремим посиланням, якщо потрібно -->
+					<a href="/spotify-playlist?id={{id}}" class="playlist__arrow">
+						<img width="30" height="30" src="/svg/arrow-right.svg">
+					</a>
+				</li>
+			{{/each}}
+			</ul>
+		</div>
+	{{/with}}
+</main>

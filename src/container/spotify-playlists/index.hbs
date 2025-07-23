@@ -1,9 +1,5 @@
-{{! 
-Це код container файлу для index сторінки, 
-в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
- }}
 
-<main class="main">
+{{!-- <main class="main">
 	 <h1>Список плейлістів</h1>
     <a href="/">На головну</a>
     <ul>
@@ -15,10 +11,116 @@
             </li>
         {{/each}}
     </ul>
+</main> --}}
+
+
+{{!-- <main class="main">
+  <div class="header">
+    <h1 class="title">Моя бібліотека</h1>
+    <div class="header__buttons">
+      <a href="/spotify-search" class="icon-button">
+        <img src="/svg/search.svg" alt="Search">
+      </a>
+      <a href="/spotify-create" class="icon-button">
+        <img src="/svg/plus5.png" alt="Add">
+      </a>
+    </div>
+  </div>
+  
+  <div class="playlist-grid">
+    {{#each playlists}}
+      <div class="playlist-card">
+        <a href="/spotify-playlist?id={{this.id}}" class="playlist-link">
+          <div class="playlist-image" style="background-color: {{this.color}}">
+            {{#if this.image}}
+              <img src="{{this.image}}" alt="{{this.name}}">
+            {{else}}
+              <span class="playlist-icon">♪</span>
+            {{/if}}
+          </div>
+          <div class="playlist-info">
+            <h3 class="playlist-name">{{this.name}}</h3>
+            <p class="playlist-count">{{this.tracks.length}} пісень</p>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+  
+  <div class="navigation">
+    <a href="/" class="nav-button">На головну</a>
+  </div>
+</main> --}}
+
+
+{{!-- <main class="main">
+  <div class="header">
+    <h1 class="title">{{data.title}}</h1>
+    <div class="header__buttons">
+      <a href="/spotify-search" class="icon-button">
+        <img src="/svg/search.svg" alt="Search">
+      </a>
+      <a href="/spotify-create" class="icon-button">
+        <img src="/svg/plus5.png" alt="Add">
+      </a>
+    </div>
+  </div>
+  
+  <div class="playlist-grid">
+    {{#each data.playlists}}
+      <div class="playlist-card">
+        <a href="/spotify-playlist?id={{this.id}}" class="playlist-link">
+          <div class="playlist-image" style="background-color: {{this.color}}">
+            {{#if this.image}}
+              <img src="{{this.image}}" alt="{{this.name}}">
+            {{else}}
+              <span class="playlist-icon">♪</span>
+            {{/if}}
+          </div>
+          <div class="playlist-info">
+            <h3 class="playlist-name">{{this.name}}</h3>
+            <p class="playlist-count">{{this.tracksCount}}</p>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
+  
+  <div class="navigation">
+    <a href="/" class="nav-button">На головну</a>
+  </div>
+</main> --}}
+
+<main class="main">
+  <div class="header">
+    <h1 class="title">{{data.title}}</h1>
+    <div class="header__buttons">
+      <a href="/spotify-search" class="icon-button">
+        <img src="/svg/search.svg" alt="Search">
+      </a>
+      <a href="/spotify-create" class="icon-button">
+        <img src="/svg/plus5.png" alt="Add">
+      </a>
+    </div>
+  </div>
+  
+  <div class="playlist-grid">
+    {{#each data.playlists}}
+      <div class="playlist-card">
+        <a href="/spotify-playlist?id={{this.id}}" class="playlist-link">
+          <div class="playlist-image" style="background-color: {{this.color}}">
+            {{#if this.image}}
+              <img src="{{this.image}}" alt="{{this.name}}">
+            {{else}}
+              <span class="playlist-icon">♪</span>
+            {{/if}}
+          </div>
+          <div class="playlist-info">
+            <h3 class="playlist-name">{{this.name}}</h3>
+            <p class="playlist-count">{{this.tracksCount}}</p>
+          </div>
+        </a>
+      </div>
+    {{/each}}
+  </div>
 </main>
-
-
-{{! 
-    Цей код містить лише те, що буде виводитись в <body>
-    Адже наш layout/default.hbs має вже структуру HTML
-}}

@@ -1,5 +1,18 @@
 @use './service.scss' as s;
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
+  
+  body {
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+  }
+
 a {
     text-decoration: none;
     color: inherit;
@@ -16,6 +29,8 @@ a {
     display: flex;
     justify-content: center;
     padding: s.space(6) s.space(2);
+    min-height: 100vh;
+    width: 100%;
 }
 
 .main__content {
@@ -24,6 +39,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: s.space(15);
+    background-color: black;
+    min-height: 100vh;
 }
 
 .title {
@@ -39,6 +56,7 @@ a {
     grid-template-columns: 92px 1fr 42px;
     gap: s.space(7);
     align-items: center;
+    background-color: black;
 
     &__list {
         display: grid;
@@ -56,4 +74,42 @@ a {
         font-size: 24px;
         color: s.color(light);
     }
+
+    &__author {
+        font-size: 16px;
+        color: s.color(gray);
+    }
+}
+
+.track__list {
+  background-color: black;
+}
+
+.playlist {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: s.space(7);
+    align-items: center;
+    
+    &__list {
+        display: grid;
+        gap: s.space(7);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: s.space(2);
+    }
+
+    &__name {
+        font-size: 24px;
+        color: s.color(light);
+    }
+
+    &__amount {
+        font-size: 16px;
+        color:s.color(gray);
+    }    
 }
